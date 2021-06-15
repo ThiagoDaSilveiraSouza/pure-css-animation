@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>animation</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+:root{
+    --main-collor: #bbcc35;
+    --main-bg-collor: white;
+    --main-font: 'Roboto', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.animation{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--main-bg-collor);
+}
+
+/* ____________________.box____________________ */
+.box{
+    width: 80%;
+    height: 80%;
+    border-top: 8px solid black;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 8px;
+}
+.box::before, .box::after{
+    content: '';
+    width: 100%;
+    height: 70%;
+    box-sizing: border-box;
+    position: absolute;
+    animation: animation-box infinite 4s ease-in-out;
+    z-index: 10;
+    
+}
+.box::before{
+    border-left: 8px solid black ;
+    border-radius: 0 0 0 5px;
+    left: 0;
+    top: 0;
+    animation-delay: .5s;
+}
+.box::after{
+    border-right: 8px solid black ;
+    border-radius: 0 0 5px 0px;
+    left: 0;
+    top: 0;
+}
+
+/* ____________________.box-header____________________ */
+.box-header{
+    height: 20%;
+    width: 100%;
+    background: var(--main-collor);
+    box-sizing: border-box;
+    border: 0 8px solid black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px;
+
+}
+
+.box-header span{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: var(--main-bg-collor);
+    margin: 10px;
+    animation: span-ball-growing infinite 2s ease-in-out;
+}
+.box-header span:first-child{
+    animation-delay: .2s;
+}
+.box-header span:nth-child(2){
+    animation-delay: .4s;
+}
+
+/* ____________________.code-box____________________ */
+
+.code-box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.code{
+    background: gray;
+    width: 85%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.code span{
+    color: var(--main-bg-collor);
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+.code span:first-child{
+    animation: hide-show-code infinite 3s step-start;
+    border-top: 8px solid var(--main-bg-collor);
+    border-left: 8px solid var(--main-bg-collor);
+    transform: rotate(-45deg);
+}
+.code span:nth-child(2){
+    animation: hide-show-code infinite 2s step-start;
+    transform: rotate(30deg);
+    width: 8px;
+    height: 65px;
+    background: var(--main-bg-collor);    
+    
+}
+.code span:last-child{
+    animation: hide-show-code infinite 1s step-start;
+    border-top: 8px solid var(--main-bg-collor);
+    border-right: 8px solid var(--main-bg-collor);
+    transform: rotate(45deg);
+}
+
+/* ____________________.spanner____________________ */
+
+.spanner{
+    width: 60%;
+    height: 10%;
+    border-top: 8px solid black;
+    border-bottom: 8px solid black;
+    position: absolute;
+    bottom: 0;
+    background: var(--main-bg-collor);
+    animation: spanner-up-donw infinite 3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    z-index: 20;
+    background: var(--main-bg-collor);
+}
+.arm span{
+    height: 8px;
+    background: var(--main-collor);
+    border-radius: 10px;
+    animation: arm-span-shake infinite 4s ease-in-out;
+    margin: 0 10px;
+}
+.arm span:first-child{
+    width: 25px;
+    
+}
+.arm span:last-child{
+    width: 45px;
+}
+
+
+.heads{
+    height: 50px;
+    width: 50px;
+    border: 8px solid black ;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 15;
+    background: var(--main-bg-collor);
+}
+.heads:first-child{
+    right: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heads:first-child .hole{
+    position: absolute;
+    width: 60%;
+    height: 40%;
+    background: var(--main-bg-collor);
+    left: -0px;
+    border-top: 8px solid black;
+    border-bottom: 8px solid black;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heads:first-child .hole:before{
+    content: '';
+    right:100%;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    background: var(--main-bg-collor);
+    box-sizing: border-box;
+}
+.heads:first-child .hole::after{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 55%;
+    border-top: 8px solid black;
+    border-right: 8px solid black;
+    width: 17px;
+    height: 17px;
+    transform: rotate(45deg);
+    border-radius: 3px;
+}
+.heads:last-child{
+    left: 92%;
+}
+.heads:last-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center{
+    animation: pin-rotation infinite 4s linear ;
+}
+.pin{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.pin span{
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    background: black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.pin span:nth-child(2){
+    width: 60%;
+    transform: rotate(70deg);
+}
+.pin span:nth-child(3){
+    width: 60%;
+    transform: rotate(-70deg);
+}
+.pin-in{
+    width: 18px;
+    height: 18px;
+}
+.pin-in span{
+    background: var(--main-collor);
+}
+
+/* ____________________.animations____________________ */
+
+
+@keyframes animation-box{
+    0%, 100%{
+        height: 70%;
+        transition: 2s;
+    }
+    50%{
+        height: 45%;
+    }
+}
+@keyframes span-ball-growing{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.4);
+    }
+}
+
+@keyframes hide-show-code{
+    0%,100%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+}
+
+@keyframes spanner-up-donw{
+    0%,100%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 8%;
+    }
+}
+@keyframes arm-span-shake{
+    0%,100%{
+        transform: translate3d(-0px, 0, 0) scaleX(1);
+    }
+    50%{
+        transform: translate3d(15px, 0, 0) scaleX(1.1);
+    }
+}
+@keyframes pin-rotation {
+    0% {
+            transform: rotate(0deg);
+    }
+    100% {
+            transform: rotate(359deg);
+    }
+}
+    </style>
+
+</head>
+<body>
+    <div class="animation">
+        <div class="box">
+            <div class="box-header">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="code-box">
+                <div class="code">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="spanner">
+                <div class="heads">
+                    <div class="hole"></div>    
+                </div>
+                <div class="arm">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="heads">
+                    <div class="center">
+                        <div class="pin">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <div class="pin pin-in">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
